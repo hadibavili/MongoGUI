@@ -1,0 +1,31 @@
+{
+  "name": "mongo-gui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hadibavili/MongoGUI.git"
+  },
+  "keywords": [
+    "mongoDB",
+    "GUI",
+    "configuration",
+    "mongodb",
+    "mongo"
+  ],
+  "author": "hadibavili",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hadibavili/MongoGUI/issues"
+  },
+  "homepage": "https://github.com/hadibavili/MongoGUI#readme",
+  "dependencies": {
+    "apollo-server-express": "^3.3.0",
+    "express": "^4.17.1",
+    "graphql": "^15.5.1"
+  }
+}
