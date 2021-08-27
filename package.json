@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/hadibavili/MongoGUI#readme",
   "dependencies": {
-    "apollo-server-express": "^3.3.0",
+    "apollo-server-express": "^2.25.2",
     "express": "^4.17.1",
     "graphql": "^15.5.1"
   }
