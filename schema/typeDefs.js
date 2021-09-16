@@ -7,12 +7,23 @@ const typeDefs = gql`
       username: String
       email: String!
    }
+   type Install{
+      status:Boolean!
+   }
 
    # Queries
 
    type Query {
       getAllUsers: [User!]!
    }
+
+
+   # Mutation
+
+   type Mutation {
+      installDB(status: Boolean!): String!
+   }
+
 
 `;
 

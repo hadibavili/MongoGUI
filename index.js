@@ -11,3 +11,7 @@ server.applyMiddleware({ app });
 app.listen({ port: 4000 }, () => {
    console.log("server running on 4000");
 });
+
+app.get("/", (req, res) => {
+   res.json('dfs')
+});
