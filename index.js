@@ -13,5 +13,8 @@ app.listen({ port: 4000 }, () => {
 });
 
 app.get("/", (req, res) => {
-   res.json('dfs')
+   let age = 20;
+
+   let result = age * 20;
+   res.json(result);
 });
