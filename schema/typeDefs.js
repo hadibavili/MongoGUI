@@ -15,6 +15,7 @@ const typeDefs = gql`
 
    type Query {
       getAllUsers: [User!]!
+      updatePackages: String!
    }
 
 

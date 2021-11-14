@@ -7,6 +7,16 @@ const resolvers = {
       getAllUsers() {
          return {};
       },
+      updatePackages() {
+         return new Promise(resolve => {
+            exec(
+               `sudo apt-get update`,
+               (error, stdout, stderr) => {
+                  resolve(stdout);
+               }
+            );
+         });
+      },
    },
    Mutation: {
       installDB() {
