@@ -11,15 +11,15 @@ const resolvers = {
    Mutation: {
       async installDB() {
          console.log("start");
-         await exec(
+         const res = await exec(
             `wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | sudo apt-key add -
          sudo apt-get update`,
             (error, stdout, stderr) => {
-               console.log('done')
-               return "done"
                return stdout;
             }
          );
+         console.log(res)
+            
       },
    },
 };
