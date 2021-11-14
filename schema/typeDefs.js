@@ -22,6 +22,7 @@ const typeDefs = gql`
 
    type Mutation {
       installDB(status: Boolean!): String!
+      creatListFile(status: Boolean!): String!
    }
 
 

@@ -16,7 +16,16 @@ const resolvers = {
             sudo apt-get update`,
                (error, stdout, stderr) => {
                   resolve(stdout);
-                  // return stdout;
+               }
+            );
+         });
+      },
+      creatListFile() {
+         return new Promise(resolve => {
+            exec(
+               `echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/5.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list`,
+               (error, stdout, stderr) => {
+                  resolve(stdout);
                }
             );
          });
