@@ -2,6 +2,7 @@ const JSONdb = require("simple-json-db");
 const db = new JSONdb("../DATA.json");
 const { exec } = require("child_process");
 
+
 const resolvers = {
    Query: {
       getAllUsers() {
