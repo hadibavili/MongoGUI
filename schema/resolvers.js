@@ -13,12 +13,9 @@ const resolvers = {
       installDB() {
          exec(`wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | sudo apt-key add -
          sudo apt-get update`, (error, stdout, stderr) => {
-            console.log(error)
-            console.log(stdout)
-            console.log(stderr)
             return stdout;
          });
-         return "done" 
+         
          
          
       },
