@@ -9,8 +9,15 @@ const resolvers = {
       },
       updatePackages() {
          return new Promise(resolve => {
+            exec(`sudo apt-get update`, (error, stdout, stderr) => {
+               resolve(stdout);
+            });
+         });
+      },
+      installMongo() {
+         return new Promise(resolve => {
             exec(
-               `sudo apt-get update`,
+               `sudo apt-get install -y mongodb-org=5.0.2 mongodb-org-database=5.0.2 mongodb-org-server=5.0.2 mongodb-org-shell=5.0.2 mongodb-org-mongos=5.0.2 mongodb-org-tools=5.0.2`,
                (error, stdout, stderr) => {
                   resolve(stdout);
                }
