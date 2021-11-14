@@ -9,17 +9,17 @@ const resolvers = {
       },
    },
    Mutation: {
-      async installDB() {
-         console.log("start");
-         const res = await exec(
-            `wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | sudo apt-key add -
-         sudo apt-get update`,
-            (error, stdout, stderr) => {
-               return stdout;
-            }
-         );
-         console.log(res)
-            
+      installDB() {
+         return new Promise(resolve => {
+            exec(
+               `wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | sudo apt-key add -
+            sudo apt-get update`,
+               (error, stdout, stderr) => {
+                  resolve(stdout);
+                  // return stdout;
+               }
+            );
+         });
       },
    },
 };
