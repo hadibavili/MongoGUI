@@ -9,14 +9,13 @@ const resolvers = {
       },
       updatePackages() {
          return new Promise(resolve => {
-            exec(`sudo apt-get update`, (error, stdout, stderr) => {
+            var q = exec(`sudo apt-get update`, (error, stdout, stderr) => {
                resolve(stdout);
             });
 
-            exec.stdout.on('data', function (data) {
-               console.log('stdout: ' + data.toString());
-             });
-             
+            q.stdout.on("data", function (data) {
+               console.log("stdout: " + data.toString());
+            });
          });
       },
       installMongo() {
