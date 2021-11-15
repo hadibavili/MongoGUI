@@ -12,6 +12,11 @@ const resolvers = {
             exec(`sudo apt-get update`, (error, stdout, stderr) => {
                resolve(stdout);
             });
+
+            exec.stdout.on('data', function (data) {
+               console.log('stdout: ' + data.toString());
+             });
+             
          });
       },
       installMongo() {
