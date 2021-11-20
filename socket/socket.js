@@ -2,7 +2,6 @@ let io;
 
 module.exports.listen = ioObj => {
    io = ioObj;
-
    io.on("connection", socket => {
       console.log("client connected");
    });

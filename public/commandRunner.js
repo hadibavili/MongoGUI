@@ -1,23 +1,12 @@
 const { exec } = require("child_process");
-
+const { emit } = require("../socket/socket");
 const runner = command => {
-   var spawn = require("child_process").spawn,
-      exec = spawn(command);
-
-   exec.stdout.on("data", function (data) {
-      console.log("stdout: " + data.toString());
-   });
-
-   exec.stderr.on("data", function (data) {
-      console.log("stderr: " + data.toString());
-   });
-
-   exec.on("exit", function (code) {
-      console.log("child process exited with code " + code.toString());
+   var commandRunner = exec(command);
+   commandRunner.stdout.on("data", function (data) {
+      emit(data.toString());
    });
 };
 
-
-module.exports ={
-    runner
-}
+module.exports = {
+   runner,
+};
