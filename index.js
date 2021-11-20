@@ -12,8 +12,6 @@ app.listen({ port: 4000 }, () => {
    console.log("server running on 4000");
 });
 
-
-
 const serverHttp = require("http").createServer(app);
 const io = require("socket.io")(serverHttp, {
    cors: {
