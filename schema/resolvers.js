@@ -1,6 +1,7 @@
 const JSONdb = require("simple-json-db");
-const db = new JSONdb("../DATA.json");
 const { exec } = require("child_process");
+const socket = require("../socket/socket");
+const runner = require("../public/commandRunner");
 
 const resolvers = {
    Query: {
@@ -8,16 +9,31 @@ const resolvers = {
          return {};
       },
       updatePackages() {
-         return new Promise(resolve => {
-            var q = exec(`sudo apt-get update`, (error, stdout, stderr) => {
-               resolve(stdout);
-            });
-         });
+         runner(`sudo apt-get update`);
+         return true;
+         // return new Promise(resolve => {
+         //    var q = exec(`sudo apt-get update`, (error, stdout, stderr) => {
+         //       resolve(stdout);
+         //    });
+         // });
       },
       installMongo() {
          return new Promise(resolve => {
             var q = exec(
                `sudo apt-get install -y mongodb-org=5.0.2 mongodb-org-database=5.0.2 mongodb-org-server=5.0.2 mongodb-org-shell=5.0.2 mongodb-org-mongos=5.0.2 mongodb-org-tools=5.0.2`,
+               (error, stdout, stderr) => {
+                  resolve(stdout);
+               }
+            );
+            q.stdout.on("data", function (data) {
+               console.log("stdout: " + data.toString());
+            });
+         });
+      },
+      getSettings() {
+         return new Promise(resolve => {
+            var q = exec(
+               `sudo cat /etc/mongod.conf`,
                (error, stdout, stderr) => {
                   resolve(stdout);
                }

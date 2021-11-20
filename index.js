@@ -12,9 +12,14 @@ app.listen({ port: 4000 }, () => {
    console.log("server running on 4000");
 });
 
-app.get("/", (req, res) => {
-   let age = 20;
 
-   let result = age * 20;
-   res.json(result);
-});
+
+const serverHttp = require("http").createServer(app);
+const io = require("socket.io")(serverHttp);
+const socket = require("./socket/socket");
+socket.listen(io);
+serverHttp.listen(3000);
+
+module.exports = {
+   io,
+};

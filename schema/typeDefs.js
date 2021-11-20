@@ -17,6 +17,7 @@ const typeDefs = gql`
       getAllUsers: [User!]!
       updatePackages: String!
       installMongo: String!
+      getSettings: String!
    }
 
 
