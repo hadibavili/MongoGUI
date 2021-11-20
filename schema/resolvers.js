@@ -1,7 +1,7 @@
 const JSONdb = require("simple-json-db");
 const { exec } = require("child_process");
 const socket = require("../socket/socket");
-const runner = require("../public/commandRunner");
+const { runner } = require("../public/commandRunner");
 
 const resolvers = {
    Query: {

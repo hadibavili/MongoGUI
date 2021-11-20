@@ -1,6 +1,6 @@
 const { exec } = require("child_process");
 
-module.exports.runner = command => {
+const runner = command => {
    var spawn = require("child_process").spawn,
       exec = spawn(command);
 
@@ -16,3 +16,8 @@ module.exports.runner = command => {
       console.log("child process exited with code " + code.toString());
    });
 };
+
+
+module.exports ={
+    runner
+}
