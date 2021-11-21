@@ -1,8 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.typeDefs = void 0;
 const { gql, ApolloServer } = require("apollo-server-express");
-exports.typeDefs = gql `
+
+export const typeDefs = gql`
    type User {
       id: Int!
       name: String!
@@ -29,3 +27,5 @@ exports.typeDefs = gql `
       creatListFile(status: Boolean!): String!
    }
 `;
+
+

@@ -31,5 +31,8 @@
     "nodemon": "^2.0.12",
     "simple-json-db": "^1.2.3",
     "socket.io": "^2.2.0"
+  },
+  "devDependencies": {
+    "ts-node-dev": "^1.1.8"
   }
 }

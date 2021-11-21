@@ -1,12 +1,11 @@
-let io;
-
-module.exports.listen = ioObj => {
-   io = ioObj;
-   io.on("connection", socket => {
-      console.log("client connected");
-   });
+"use strict";
+let ioNew = require("../index");
+module.exports.listen = (ioObj) => {
+    ioNew = ioObj;
+    ioNew.on("connection", (socket) => {
+        console.log("client connected");
+    });
 };
-
-module.exports.emit = data => {
-   io.emit("log", data);
+module.exports.emit = (data) => {
+    ioNew.emit("log", data);
 };
