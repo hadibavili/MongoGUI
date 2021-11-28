@@ -16,16 +16,13 @@ exports.typeDefs = gql `
    # Queries
 
    type Query {
-      getAllUsers: [User!]!
-      updatePackages: String!
-      installMongo: String!
       getSettings: String!
+      installMongo: String!
    }
 
    # Mutation
 
    type Mutation {
       installDB(status: Boolean!): String!
-      creatListFile(status: Boolean!): String!
    }
 `;
