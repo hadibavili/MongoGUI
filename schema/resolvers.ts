@@ -25,6 +25,7 @@ export const resolvers = {
          const action = await write(result);
          const doc = yaml.load(fs.readFileSync("../mongod.yml", "utf8"));
 
+         console.log(action)
          console.log(doc);
          return result;
       },

@@ -2,7 +2,7 @@ const fs = require("fs");
 // Create a writable stream
 var writerStream = fs.createWriteStream("../mongod.yml");
 
-module.export.write = data => {
+module.exports.write = (data: string) => {
    return new Promise((resolve, reject) => {
       // Write the data to stream with encoding to be utf8
       writerStream.write(data, "UTF8");
@@ -13,11 +13,11 @@ module.export.write = data => {
       // Handle stream events --> finish, and error
       writerStream.on("finish", function () {
          console.log("Write completed.");
-         resolve(true)
+         resolve(true);
       });
 
-      writerStream.on("error", function (err) {
-         reject(err.stack)
+      writerStream.on("error", function (err: any) {
+         reject(err.stack);
       });
    });
 };

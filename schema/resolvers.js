@@ -14,6 +14,9 @@ const JSONdb = require("simple-json-db");
 const { exec } = require("child_process");
 const socket = require("../socket/socket");
 const { runner, reader } = require("../public/commandRunner");
+const yaml = require("js-yaml");
+const fs = require("fs");
+const write = require("../public/fs");
 exports.resolvers = {
     Query: {
         installMongo() {
@@ -29,7 +32,10 @@ exports.resolvers = {
         getSettings() {
             return __awaiter(this, void 0, void 0, function* () {
                 const result = yield reader(`sudo cat /etc/mongod.conf`);
-                console.log(result);
+                const action = yield write(result);
+                const doc = yaml.load(fs.readFileSync("../mongod.yml", "utf8"));
+                console.log(action);
+                console.log(doc);
                 return result;
             });
         },
