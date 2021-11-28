@@ -16,7 +16,7 @@ const socket = require("../socket/socket");
 const { runner, reader } = require("../public/commandRunner");
 const yaml = require("js-yaml");
 const fs = require("fs");
-const write = require("../public/fs");
+const { write } = require("../public/fs");
 exports.resolvers = {
     Query: {
         installMongo() {

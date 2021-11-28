@@ -4,7 +4,7 @@ const socket = require("../socket/socket");
 const { runner, reader } = require("../public/commandRunner");
 const yaml = require("js-yaml");
 const fs = require("fs");
-const write = require("../public/fs");
+const { write } = require("../public/fs");
 
 export const resolvers = {
    Query: {
@@ -25,7 +25,7 @@ export const resolvers = {
          const action = await write(result);
          const doc = yaml.load(fs.readFileSync("../mongod.yml", "utf8"));
 
-         console.log(action)
+         console.log(action);
          console.log(doc);
          return result;
       },
