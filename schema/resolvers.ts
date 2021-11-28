@@ -2,6 +2,9 @@ const JSONdb = require("simple-json-db");
 const { exec } = require("child_process");
 const socket = require("../socket/socket");
 const { runner, reader } = require("../public/commandRunner");
+const yaml = require("js-yaml");
+const fs = require("fs");
+const write = require("../public/fs");
 
 export const resolvers = {
    Query: {
@@ -19,10 +22,12 @@ export const resolvers = {
       },
       async getSettings() {
          const result = await reader(`sudo cat /etc/mongod.conf`);
-         console.log(result);
+         const action = await write(result);
+         const doc = yaml.load(fs.readFileSync("../mongod.yml", "utf8"));
+
+         console.log(doc);
          return result;
       },
    },
    Mutation: {},
 };
-
