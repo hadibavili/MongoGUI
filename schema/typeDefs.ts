@@ -21,7 +21,7 @@ export const typeDefs = gql`
    # Mutation
 
    type Mutation {
-      installDB(status: Boolean!): String!
+      updateSetting(data: Json!): String!
    }
 `;
 

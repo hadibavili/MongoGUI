@@ -4,7 +4,7 @@ const socket = require("../socket/socket");
 const { runner, reader } = require("../public/commandRunner");
 const yaml = require("js-yaml");
 const fs = require("fs");
-const { write } = require("../public/fs");
+const { write, read } = require("../public/fs");
 
 export const resolvers = {
    Query: {
@@ -23,11 +23,9 @@ export const resolvers = {
       async getSettings() {
          const result = await reader(`sudo cat /etc/mongod.conf`);
          const action = await write(result);
-         const doc = yaml.load(fs.readFileSync("../mongod.yml", "utf8"));
-
-         console.log(action);
-         console.log(doc);
-         return result;
+         const data = await read();
+         const doc = yaml.load(data);
+         return doc;
       },
    },
    Mutation: {},

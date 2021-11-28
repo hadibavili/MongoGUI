@@ -16,7 +16,7 @@ const socket = require("../socket/socket");
 const { runner, reader } = require("../public/commandRunner");
 const yaml = require("js-yaml");
 const fs = require("fs");
-const { write } = require("../public/fs");
+const { write, read } = require("../public/fs");
 exports.resolvers = {
     Query: {
         installMongo() {
@@ -33,10 +33,9 @@ exports.resolvers = {
             return __awaiter(this, void 0, void 0, function* () {
                 const result = yield reader(`sudo cat /etc/mongod.conf`);
                 const action = yield write(result);
-                const doc = yaml.load(fs.readFileSync("../mongod.yml", "utf8"));
-                console.log(action);
-                console.log(doc);
-                return result;
+                const data = yield read();
+                const doc = yaml.load(data);
+                return doc;
             });
         },
     },
