@@ -23,6 +23,6 @@ exports.typeDefs = gql `
    # Mutation
 
    type Mutation {
-      updateSetting(data: Object!): String!
+      updateSetting(data: String!): String!
    }
 `;
