@@ -35,6 +35,7 @@ exports.resolvers = {
                 const action = yield write(result);
                 const data = yield read();
                 const doc = yaml.load(data);
+                console.log(doc);
                 return doc;
             });
         },

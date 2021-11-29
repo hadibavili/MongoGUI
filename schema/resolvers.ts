@@ -25,6 +25,7 @@ export const resolvers = {
          const action = await write(result);
          const data = await read();
          const doc = yaml.load(data);
+         console.log(doc);
          return doc;
       },
    },
