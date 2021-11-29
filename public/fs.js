@@ -1,10 +1,11 @@
 "use strict";
 const fs = require("fs");
 // Create a writable stream
-var writerStream = fs.createWriteStream("../mongod.yml");
+var writerStream = fs.createWriteStream("./mongod.yml");
 // Create a readable stream
-var readerStream = fs.createReadStream("../mongod.yml");
+var readerStream = fs.createReadStream("./mongod.yml");
 readerStream.setEncoding("UTF8");
+const yaml = require("js-yaml");
 module.exports.write = (data) => {
     return new Promise((resolve, reject) => {
         // Write the data to stream with encoding to be utf8
@@ -23,16 +24,7 @@ module.exports.write = (data) => {
 };
 module.exports.read = () => {
     return new Promise((resolve, reject) => {
-        var data = "";
-        // Handle stream events --> data, end, and error
-        readerStream.on("data", function (chunk) {
-            data += chunk;
-        });
-        readerStream.on("end", function () {
-            resolve(data);
-        });
-        readerStream.on("error", function (err) {
-            reject(err.stack);
-        });
+        const doc = yaml.load(fs.readFileSync('./mongod.yml', 'utf8'));
+        resolve(doc);
     });
 };
