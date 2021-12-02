@@ -31,12 +31,9 @@ exports.resolvers = {
         },
         getSettings() {
             return __awaiter(this, void 0, void 0, function* () {
-                const result = yield reader(`sudo cat /etc/mongod.conf`);
-                const action = yield write(result);
-                const data = yield read();
-                const doc = yaml.load(data);
+                console.log(1)
+                const doc = yaml.load(fs.readFileSync("../mongod", "utf8"));
                 console.log(doc);
-                return doc;
             });
         },
     },

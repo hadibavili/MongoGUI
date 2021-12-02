@@ -21,12 +21,8 @@ export const resolvers = {
          return true;
       },
       async getSettings() {
-         const result = await reader(`sudo cat /etc/mongod.conf`);
-         const action = await write(result);
-         const data = await read();
-         const doc = yaml.load(data);
-         console.log(doc);
-         return doc;
+         const doc = yaml.load(fs.readFileSync("../", "utf8"));
+         console.log(doc)
       },
    },
    Mutation: {},
