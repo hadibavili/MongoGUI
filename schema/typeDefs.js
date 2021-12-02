@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.typeDefs = void 0;
 const { gql, ApolloServer } = require("apollo-server-express");
 exports.typeDefs = gql `
    type User {
@@ -23,6 +22,6 @@ exports.typeDefs = gql `
    # Mutation
 
    type Mutation {
-      updateSetting(data: String!): String!
+      updateSetting(data: String!): Boolean!
    }
 `;

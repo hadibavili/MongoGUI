@@ -21,7 +21,7 @@ export const typeDefs = gql`
    # Mutation
 
    type Mutation {
-      updateSetting(data: String!): String!
+      updateSetting(data: String!): Boolean!
    }
 `;
 

@@ -5,7 +5,8 @@ const { runner, reader } = require("../public/commandRunner");
 const yaml = require("js-yaml");
 const fs = require("fs");
 const { write, read } = require("../public/fs");
-
+var YAML = require("json2yaml"),
+   ymlText;
 export const resolvers = {
    Query: {
       async installMongo() {
@@ -21,9 +22,24 @@ export const resolvers = {
          return true;
       },
       async getSettings() {
+<<<<<<< HEAD
          const doc = yaml.load(fs.readFileSync("../", "utf8"));
          console.log(doc)
+=======
+         const result = await reader(`sudo cat /etc/mongod.conf`);
+         const action = await write(result);
+         const data = await read();
+         return JSON.stringify(data);
       },
    },
-   Mutation: {},
+   Mutation: {
+      async updateSetting(_: any, { data }: any) {
+         ymlText = YAML.stringify(JSON.parse(data));
+
+         const action = await write(ymlText);
+
+         return action;
+>>>>>>> 267f7f824e6b752e8b82984b3a0bf5338cf00680
+      },
+   },
 };
