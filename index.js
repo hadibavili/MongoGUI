@@ -6,6 +6,7 @@ const express = require("express");
 const app = express();
 const server = new ApolloServer({ typeDefs, resolvers });
 server.applyMiddleware({ app });
+
 app.listen({ port: 4000 }, () => {
     console.log("server running on 4000");
 });
